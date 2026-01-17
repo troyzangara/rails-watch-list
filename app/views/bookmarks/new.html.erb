@@ -1,0 +1,10 @@
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%# The association dropdown %>
+  <%= f.association :movie,
+                    collection: Movie.all.order(:title),
+                    prompt: "Choose a movie",
+                    label: "Select a movie" %>
+  <%# The comment input %>
+  <%= f.input :comment %>
+  <%= f.submit "Add movie", class: "btn btn-primary" %>
+<% end %>
