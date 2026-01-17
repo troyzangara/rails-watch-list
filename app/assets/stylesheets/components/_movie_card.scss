@@ -1,0 +1,42 @@
+.movie-card {
+  background: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &-img { // Pro tip: Nested shorthand for .movie-card-img
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &-infos {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    .movie-card-overview {
+      font-size: 13px;
+      margin-top: 10px;
+      color: #555;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  &-footer {
+    border-top: 1px solid #f1f1f1;
+    padding-top: 15px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

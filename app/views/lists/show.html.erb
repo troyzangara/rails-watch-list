@@ -1,21 +1,44 @@
-<div class="container">
-  <h1><%= @list.name %></h1>
-  <h2>Movies</h2>
-  <ul>
-    <% @list.bookmarks.each do |bookmark| %>
-      <li>
-        <strong><%= bookmark.movie.title %></strong>
-        (<%= bookmark.movie.rating %> stars) -
-        <em>"<%= bookmark.comment %>"</em>
-        <%= link_to "Delete",
-                    bookmark_path(bookmark),
-                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                    class: "text-danger" %>
-      </li>
-    <% end %>
-  </ul>
-  <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
-  <br>
-  <%= link_to "Back to all lists", lists_path %>
+<%# 1. The Dynamic Banner %>
+<div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @list.image_url.present? ? @list.image_url : "https://picsum.photos/id/3/1200/400" %>')">
+  <div class="container text-center text-white">
+    <h1 class="display-3 fw-bold"><%= @list.name %></h1>
+  </div>
+  <span class="movie-tag"><%= pluralize(@list.movies.count, 'movie') %></span>
 </div>
+<div class="container mb-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Movies</h2>
+    <%= link_to "add a movie", new_list_bookmark_path(@list), class: "btn btn-flat" %>
+  </div>
+  <%# 2. The Movie Grid %>
+  <div class="row">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="col-12 col-sm-6 mb-4">
+        <div class="movie-card">
+          <%# Movie Image %>
+          <img src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>" class="movie-card-img">
+          <div class="movie-card-infos">
+            <div>
+              <div class="d-flex align-items-center">
+                <strong class="fs-5"><%= bookmark.movie.title %></strong>
+                <span class="text-muted ms-2">• <%= bookmark.movie.rating %> <i class="fas fa-star text-warning"></i></span>
+              </div>
+              <p class="movie-card-overview"><%= bookmark.movie.overview %></p>
+            </div>
+            <%# Footer with Comment and Delete %>
+            <div class="movie-card-footer">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-quote-left me-2 text-muted"></i>
+                <small><%= bookmark.comment %></small>
+              </div>
+              <%= link_to "delete", bookmark_path(bookmark),
+                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                          class: "text-danger text-decoration-none" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <hr>
 </div>

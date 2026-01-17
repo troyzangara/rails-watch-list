@@ -1,12 +1,28 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  display: flex;
+  justify-content: space-between; // Fixed the typo here
+  align-items: center;
   background: white;
-}
+  padding: 0 20px;
+  height: 70px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  .navbar-collapse {
+    flex-grow: 0;
+  }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  .navbar-brand img {
+    width: 40px;
+    object-fit: contain;
+  }
+
+  .nav-link {
+    color: #090000;
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+    &:hover { // Using SCSS chaining for the hover state
+      color: #333;
+    }
+  }
 }
