@@ -20,12 +20,13 @@
     justify-content: space-between;
     flex-grow: 1;
 
-    .movie-card-overview {
+  &-overview {
       font-size: 13px;
       margin-top: 10px;
       color: #555;
       display: -webkit-box;
       -webkit-line-clamp: 3;
+      line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }

@@ -17,16 +17,3 @@
     transform: scale(1.02);
   }
 }
-
-.btn-flat {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #682ecc;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: #570868;
-    color: white;
-  }
-}
