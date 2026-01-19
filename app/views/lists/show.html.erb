@@ -3,12 +3,11 @@
   <div class="container text-center text-white">
     <h1 class="display-3 fw-bold"><%= @list.name %></h1>
   </div>
-  <span class="movie-tag"><%= pluralize(@list.movies.count, 'movie') %></span>
 </div>
 <div class="container mb-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="mb-0">Movies</h2>
-    <%= link_to "add a movie", new_list_bookmark_path(@list), class: "btn btn-flat" %>
+    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-flat" %>
   </div>
   <%# 2. The Movie Grid %>
   <div class="row">
@@ -21,7 +20,7 @@
             <div>
               <div class="d-flex align-items-center">
                 <strong class="fs-5"><%= bookmark.movie.title %></strong>
-                <span class="text-muted ms-2">• <%= bookmark.movie.rating %> <i class="fas fa-star text-warning"></i></span>
+                <span class="text-muted ms-2">• <%= bookmark.movie.rating&.round(1) %> <i class="fas fa-star text-warning"></i></span>
               </div>
               <p class="movie-card-overview"><%= bookmark.movie.overview %></p>
             </div>
@@ -31,7 +30,7 @@
                 <i class="fas fa-quote-left me-2 text-muted"></i>
                 <small><%= bookmark.comment %></small>
               </div>
-              <%= link_to "delete", bookmark_path(bookmark),
+              <%= link_to "Delete", bookmark_path(bookmark),
                           data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
                           class: "text-danger text-decoration-none" %>
             </div>
