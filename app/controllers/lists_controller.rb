@@ -24,6 +24,6 @@ class ListsController < ApplicationController
 
   def list_params
     # You MUST add :image_url here or Rails will ignore it for security
-    params.require(:list).permit(:name, :image_url)
+    params.require(:list).permit(:name, :image_url, :photo)
   end
 end

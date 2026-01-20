@@ -4,7 +4,8 @@
       <h1>Create a new list</h1>
       <%= simple_form_for(@list) do |f| %>
         <%= f.input :name, placeholder: "e.g. Science Fiction" %>
-        <%= f.input :image_url, placeholder: "Paste a direct image link here" %>
+        <%= f.input :photo, as: :file, hint: "Upload a cover image from your computer" %>
+        <%= f.input :image_url, placeholder: "Or paste a direct image link here" %>
         <%= f.submit "Create List", class: "btn btn-primary" %>
         <%= link_to "Cancel", lists_path, class: "btn btn-outline-secondary" %>
       <% end %>
