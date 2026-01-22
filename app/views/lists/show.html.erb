@@ -1,6 +1,6 @@
 <%# define the URL before the HTML starts %>
 <% if @list.photo.attached? %>
-  <% banner_url = cl_image_path(@list.photo.key, height: 600, crop: :fill) %>
+  <% banner_url = cl_image_path(@list.photo.key, width: 1200, crop: :fill, quality: :auto, fetch_format: :auto) %>
 <% else %>
   <% banner_url = @list.image_url %>
 <% end %>
