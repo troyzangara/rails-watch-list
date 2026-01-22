@@ -1,5 +1,11 @@
-<%# 1. The Dynamic Banner %>
-<div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @list.image_url.present? ? @list.image_url : "https://picsum.photos/id/3/1200/400" %>')">
+<%# define the URL before the HTML starts %>
+<% if @list.photo.attached? %>
+  <% banner_url = cl_image_path(@list.photo.key, height: 600, crop: :fill) %>
+<% else %>
+  <% banner_url = @list.image_url %>
+<% end %>
+<%# usevariable in the banner %>
+<div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= banner_url %>')">
   <div class="container text-center text-white">
     <h1 class="display-3 fw-bold"><%= @list.name %></h1>
   </div>
